@@ -25,7 +25,7 @@ BuildRequires:  cargo-rpm-macros >= 26
 %description %{_description}
 
 %prep
-%autosetup -n %{crate}-%{version} -p1
+%autosetup -n lightctl-%{version} -p1
 %cargo_prep
 
 %generate_buildrequires
