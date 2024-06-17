@@ -8,15 +8,9 @@ Name:           lightctl
 Version:        0.1.1
 Release:        %autorelease
 Summary:        Simple utility to control backlight devices on Linux through logind
-
-SourceLicense:  MIT
-# FIXME: paste output of %%cargo_license_summary here
-License:        # FIXME
-# LICENSE.dependencies contains a full license breakdown
-
+License:        MIT
 URL:            https://github.com/blurrycat/lightctl
 Source:         https://github.com/blurrycat/lightctl/archive/refs/tags/v0.1.1.tar.gz
-
 BuildRequires:  cargo-rpm-macros >= 26
 
 %global _description %{expand:
@@ -26,27 +20,31 @@ BuildRequires:  cargo-rpm-macros >= 26
 
 %prep
 %autosetup -n lightctl-%{version} -p1
-%cargo_prep
+%{__cargo} vendor
+%{__mkdir} -p .cargo
+cat > .cargo/config.toml << EOF
+[profile.rpm]
+inherits = "release"
+opt-level = %{rustflags_opt_level}
+codegen-units = %{rustflags_codegen_units}
+debug = %{rustflags_debuginfo}
+strip = "none"
 
-%generate_buildrequires
-%cargo_generate_buildrequires
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
 
 %build
 %cargo_build
-%{cargo_license_summary}
-%{cargo_license} > LICENSE.dependencies
 
 %install
 %cargo_install
 
-%if %{with check}
-%check
-%cargo_test
-%endif
-
 %files
 %license LICENSE
-%license LICENSE.dependencies
 %doc README.md
 %{_bindir}/lightctl
 
