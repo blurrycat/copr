@@ -21,6 +21,7 @@ BuildRequires:  cargo-rpm-macros >= 26
 %prep
 %autosetup -n lightctl-%{version} -p1
 %{__cargo} vendor
+/usr/bin/ln -s rpm target/release
 %{__mkdir} -p .cargo
 cat > .cargo/config.toml << EOF
 [profile.rpm]
@@ -29,6 +30,9 @@ opt-level = %{rustflags_opt_level}
 codegen-units = %{rustflags_codegen_units}
 debug = %{rustflags_debuginfo}
 strip = "none"
+
+[install]
+root = "%{buildroot}%{_prefix}"
 
 [source.crates-io]
 replace-with = "vendored-sources"
