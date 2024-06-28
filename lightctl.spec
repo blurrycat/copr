@@ -7,7 +7,8 @@ URL:            https://github.com/blurrycat/lightctl
 Source:         https://github.com/blurrycat/lightctl/archive/refs/tags/v0.1.1.tar.gz
 BuildRequires:  cargo
 
-%description Simple utility to control backlight devices on Linux through logind
+%description 
+Simple utility to control backlight devices on Linux through logind
 
 %prep
 %autosetup -n lightctl-%{version} -p1
@@ -17,7 +18,7 @@ cargo fetch --locked
 cargo build --frozen --release
 
 %install
-install -Dm 755 "target/release/lightctl" -t "%{_bindir}/lightctl"
+install -Dm 755 "target/release/lightctl" -t "%{buildroot}/%{_bindir}/lightctl"
 
 %files
 %license LICENSE
