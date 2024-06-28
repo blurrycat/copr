@@ -20,7 +20,7 @@ cargo build --frozen --release
 
 %install
 install -Dm 755 "target/release/%{name}" -t "%{buildroot}/%{_bindir}/"
-install -Dm 644 "man/man1/%{name}.1" -t "%{buildroot}/%{_mandir}/"
+install -Dm 644 "man/man1/%{name}.1" -t "%{buildroot}/%{_mandir}/man1/"
 install -Dm 644 "completions/%{name}.bash" "%{buildroot}/usr/share/bash-completion/completions/%{name}"
 
 %files
