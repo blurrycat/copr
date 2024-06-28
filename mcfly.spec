@@ -13,6 +13,7 @@ that takes into account your working directory and the context of recently execu
 McFly's suggestions are prioritized in real time with a small neural network.
 
 %prep
+%autosetup -n mcfly-%{version} -p1
 cargo fetch --locked
 
 %build
