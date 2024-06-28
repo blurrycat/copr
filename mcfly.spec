@@ -20,7 +20,7 @@ cargo fetch --locked
 cargo build --frozen --release
 
 %install
-install -Dm 755 "target/release/mcfly" -t "%{_bindir}/mcfly"
+install -Dm 755 "target/release/mcfly" -t "%{buildroot}/%{_bindir}/mcfly"
 
 %check
 cargo test --frozen
