@@ -6,6 +6,9 @@ License:        ISC
 URL:            https://github.com/starship/starship
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cargo
+BuildRequires:  cmake
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(openssl)
 
 %description
 The minimal, blazing-fast, and infinitely customizable prompt for any shell!
