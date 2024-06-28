@@ -18,7 +18,7 @@ cargo fetch --locked
 cargo build --frozen --release
 
 %install
-install -Dm 755 "target/release/lightctl" -t "%{buildroot}/%{_bindir}/lightctl"
+install -Dm 755 "target/release/lightctl" -t "%{buildroot}/%{_bindir}/"
 
 %files
 %license LICENSE
