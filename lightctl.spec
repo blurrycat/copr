@@ -4,14 +4,14 @@ Release:        %autorelease
 Summary:        Simple utility to control backlight devices on Linux through logind
 License:        MIT
 URL:            https://github.com/blurrycat/lightctl
-Source:         https://github.com/blurrycat/lightctl/archive/refs/tags/v0.1.1.tar.gz
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  cargo
 
 %description 
 Simple utility to control backlight devices on Linux through logind
 
 %prep
-%autosetup -n lightctl-%{version} -p1
+%autosetup
 cargo fetch --locked
 
 %build
@@ -23,7 +23,7 @@ install -Dm 755 "target/release/lightctl" -t "%{buildroot}/%{_bindir}/"
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/lightctl
+%{_bindir}/%{name}
 
 %changelog
 %autochangelog

@@ -4,7 +4,7 @@ Release:        %autorelease
 Summary:        Fly through your shell history.
 License:        MIT
 URL:            https://github.com/cantino/mcfly
-Source:         https://github.com/cantino/mcfly/archive/refs/tags/v0.9.0.tar.gz
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  cargo
 
 %description
@@ -13,7 +13,7 @@ that takes into account your working directory and the context of recently execu
 McFly's suggestions are prioritized in real time with a small neural network.
 
 %prep
-%autosetup -n mcfly-%{version} -p1
+%autosetup
 cargo fetch --locked
 
 %build
@@ -28,7 +28,7 @@ cargo test --frozen
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/mcfly
+%{_bindir}/%{name}
 
 %changelog
 %autochangelog
