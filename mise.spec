@@ -6,6 +6,7 @@ License:        MIT
 URL:            https://github.com/jdx/mise
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  cargo
+BuildRequires:  pkgconfig(openssl)
 
 %description
 The front-end to your dev env
