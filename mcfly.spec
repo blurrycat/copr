@@ -1,5 +1,5 @@
 Name:           mcfly
-Version:        0.9.0
+Version:        0.9.3
 Release:        %autorelease
 Summary:        Fly through your shell history.
 License:        MIT
